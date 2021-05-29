@@ -25,6 +25,13 @@ class MLP:
             else:           # is is a hidden layer
                 self.f[l] = hidden_activation
         
+    def predict(self, X):
+        ##### Prediction (propagation)
+        a = np.asanyarray(X)
+        for l in range(1, self.L + 1):
+            z = np.dot(self.w[l], a) + self.b[l]
+            a = self.f[l](z)
+        return a
         
         
         
