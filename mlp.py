@@ -64,7 +64,7 @@ class MLP:
                 
                 ### Gradient descent
                 for l in range(1, self.L + 1):
-                    self.w += lr * np.dot(lg[l], a[l-1].T)
-                    self.b += lr * lg[l]                    
+                    self.w[l] += lr * np.dot(lg[l], a[l-1].T)
+                    self.b[l] += lr * lg[l]                    
         
         
