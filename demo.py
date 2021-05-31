@@ -49,8 +49,7 @@ def draw2DNetData(x, y, model, title, pointSize=5):
     plt.show()    
 
 
-
-
+#### CHOOSE THE PROBLEEM ####
 problem = 2
 
 if problem == 1: # XOR
@@ -67,13 +66,13 @@ if problem == 1: # XOR
     net = MLP((2,5,1), hidden_activation=tanh, output_activation=logistic)
 
     # draw graph before training
-    draw2DNetData(X, Y, net, "XOR Before Training")
+    draw2DNetData(X, Y, net, "XOR Before Training", pointSize=15)
     
     # train the neural network
     net.fit(X,Y, epochs=500, lr=0.1)
     
     # draw graph after training
-    draw2DNetData(X, Y, net,"XOR After Training")
+    draw2DNetData(X, Y, net,"XOR After Training", pointSize=15)
         
 elif problem == 2: # CIRCLES
     
@@ -86,13 +85,13 @@ elif problem == 2: # CIRCLES
     Y = np.asanyarray(data[['y']]).T
     
     # create our network
-    net = MLP((2,5,5,1), output_activation=logistic, hidden_activation=tanh)
+    net = MLP((2,10,10,1), output_activation=logistic, hidden_activation=tanh)
     
     # before training
     draw2DNetData(X, Y, net, "Model before training",pointSize=7)
     
     # train the network
-    net.fit(X, Y, epochs=250, lr=0.1)
+    net.fit(X, Y, epochs=350, lr=0.1)
     
     # after training
     draw2DNetData(X, Y, net, "Model after training", pointSize=7)
