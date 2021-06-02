@@ -50,7 +50,7 @@ def draw2DNetData(x, y, model, title, pointSize=5):
 
 
 #### CHOOSE THE PROBLEEM ####
-problem = 3
+problem = 4
 
 if problem == 1: # XOR
     
@@ -116,8 +116,25 @@ elif problem== 3: # BLOBS
     
     # after training
     draw2DNetData(X,Y, net,"BLOBS After training")
+   
+elif problem==4:    # MOONS
     
+    # dataset
+    data = pd.read_csv("datasets/moons.csv")
     
+    # entries
+    X = np.asanyarray(data.drop(columns=["y"])).T
+    Y = np.asanyarray(data[['y']]).T
     
+    # network
+    net = MLP((2,3,5,3,1), output_activation=logistic, hidden_activation=tanh) # (2,3,1)
     
+    # plot points
+    draw2DNetData(X,Y,net, "Moons Before training")
+    
+    # train
+    net.fit(X, Y, epochs=200, lr=0.1)
+    
+    # plot points
+    draw2DNetData(X,Y,net, "Moons After training")
     
