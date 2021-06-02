@@ -50,7 +50,7 @@ def draw2DNetData(x, y, model, title, pointSize=5):
 
 
 #### CHOOSE THE PROBLEEM ####
-problem = 2
+problem = 3
 
 if problem == 1: # XOR
     
@@ -96,8 +96,26 @@ elif problem == 2: # CIRCLES
     # after training
     draw2DNetData(X, Y, net, "Model after training", pointSize=7)
     
+elif problem== 3: # BLOBS
     
+    # read 
+    data = pd.read_csv("datasets/blobs.csv")
     
+    # x, y
+    X = np.asanyarray(data.iloc[:, :2]).T
+    Y = np.asanyarray(data[['y']]).T   
+
+    # net
+    net = MLP((2,1,1), output_activation=logistic, hidden_activation=tanh)
+    
+    # before training
+    draw2DNetData(X,Y, net,"BLOBS Before training")
+    
+    # train
+    net.fit(X, Y, epochs=250, lr=0.2)
+    
+    # after training
+    draw2DNetData(X,Y, net,"BLOBS After training")
     
     
     
