@@ -1,4 +1,3 @@
-
 # Libraries
 import numpy as np
 import matplotlib.pyplot as plt
@@ -63,7 +62,7 @@ if problem == 1: # XOR
 
     # because is a classification problem we should choose logistic activation for the output layer
     # and tanh or reLU activations for hidden layers
-    net = MLP((2,5,1), hidden_activation=tanh, output_activation=logistic)
+    net = MLP((2,10,1), hidden_activation=tanh, output_activation=logistic)
 
     # draw graph before training
     draw2DNetData(X, Y, net, "XOR Before Training", pointSize=15)
@@ -91,7 +90,7 @@ elif problem == 2: # CIRCLES
     draw2DNetData(X, Y, net, "Model before training",pointSize=7)
     
     # train the network
-    net.fit(X, Y, epochs=350, lr=0.1)
+    net.fit(X, Y, epochs=500, lr=0.1)
     
     # after training
     draw2DNetData(X, Y, net, "Model after training", pointSize=7)
@@ -106,16 +105,16 @@ elif problem== 3: # BLOBS
     Y = np.asanyarray(data[['y']]).T   
 
     # net
-    net = MLP((2,1,1), output_activation=logistic, hidden_activation=tanh)
+    net = MLP((2,7,1), output_activation=logistic, hidden_activation=tanh)
     
     # before training
-    draw2DNetData(X,Y, net,"BLOBS Before training")
+    draw2DNetData(X,Y, net,"Model Before training")
     
     # train
     net.fit(X, Y, epochs=250, lr=0.2)
     
     # after training
-    draw2DNetData(X,Y, net,"BLOBS After training")
+    draw2DNetData(X,Y, net,"Model After training")
    
 elif problem==4:    # MOONS
     
@@ -130,11 +129,11 @@ elif problem==4:    # MOONS
     net = MLP((2,3,5,3,1), output_activation=logistic, hidden_activation=tanh) # (2,3,1)
     
     # plot points
-    draw2DNetData(X,Y,net, "Moons Before training")
+    draw2DNetData(X,Y,net, "Model Before training")
     
     # train
     net.fit(X, Y, epochs=200, lr=0.1)
     
     # plot points
-    draw2DNetData(X,Y,net, "Moons After training")
+    draw2DNetData(X,Y,net, "Model After training")
     
