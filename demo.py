@@ -48,7 +48,7 @@ def draw2DNetData(x, y, model, title, pointSize=5):
     plt.show()    
 
 
-#### CHOOSE THE PROBLEEM ####
+#### CHOOSE THE PROBLEM ####
 problem = 4
 
 if problem == 1: # XOR
